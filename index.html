@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OficioActivo · Gestión de leads</title>
+    <!-- Hoja de estilos de la aplicación -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Navegación del menú -->
+    <script src="js/app.js" defer></script>
   </head>
   <body>
     <!-- Cabecera de la aplicación -->
-    <header>
+    <header class="cabecera">
       <h1>OficioActivo · Gestión de leads</h1>
       <p>
         Registra las solicitudes de clientes, asígnalas a profesionales y
@@ -15,11 +19,13 @@
       </p>
     </header>
     <!-- Menú de navegación -->
-    <aside>
+    <aside class="sidebar">
       <nav>
         <h2>Menú</h2>
         <ul>
-          <li><a href="#dashboard">Panel principal</a></li>
+          <li>
+            <a class="enlace-activo" href="#dashboard">Panel principal</a>
+          </li>
           <li><a href="#leads">Leads</a></li>
           <li><a href="#profesionales">Profesionales</a></li>
           <li><a href="#ventas">Ventas</a></li>
@@ -28,7 +34,7 @@
       </nav>
     </aside>
     <!-- Panel principal -->
-    <main>
+    <main class="contenido-principal">
       <section id="dashboard">
         <h2>Panel principal</h2>
         <p>
@@ -37,26 +43,56 @@
         </p>
 
         <!-- Resumen con los indicadores -->
-        <section>
+        <section class="resumen">
           <h3>Resumen</h3>
-          <article>
+          <article class="tarjeta-resumen">
             <h4>Leads nuevos</h4>
             <p>Solicitudes recibidas pendientes de asignar.</p>
           </article>
-          <article>
+          <article class="tarjeta-resumen">
             <h4>Leads asignados</h4>
             <p>Solicitudes ofrecidas a un profesional.</p>
           </article>
-          <article>
+          <article class="tarjeta-resumen">
             <h4>Leads vendidos</h4>
             <p>Solicitudes cerradas con un profesional.</p>
           </article>
         </section>
       </section>
+
+      <!-- Vistas del menú (solo se ve una, el resto están ocultas) -->
+      <section id="leads" hidden>
+        <h2>Leads</h2>
+        <p>
+          Aquí se verá el listado de solicitudes de clientes, con su oficio,
+          zona y estado.
+        </p>
+      </section>
+
+      <section id="profesionales" hidden>
+        <h2>Profesionales</h2>
+        <p>
+          Aquí se verán los profesionales dados de alta y el histórico de leads
+          que han comprado.
+        </p>
+      </section>
+
+      <section id="ventas" hidden>
+        <h2>Ventas</h2>
+        <p>Aquí se verán las ventas cerradas, con su fecha e importe.</p>
+      </section>
+
+      <section id="calendario-avisos" hidden>
+        <h2>Calendario y avisos</h2>
+        <p>
+          Aquí se verán las fechas de los trabajos y los avisos pendientes de
+          atender.
+        </p>
+      </section>
     </main>
 
     <!-- Pie de la aplicación -->
-    <footer>
+    <footer class="pie-pagina">
       <p>OficioActivo · Gestión de leads - Versión 1.0</p>
     </footer>
   </body>

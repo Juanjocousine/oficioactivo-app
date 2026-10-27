@@ -1,0 +1,192 @@
+/* Colores de OficioActivo (los mismos que uso en la web) */
+:root {
+  --color-fondo: #0b1220;
+  --color-zona: #111b2e;
+  --color-tarjeta: #172338;
+  --color-acento: #f59e0b;
+  --color-texto: #eef2ff;
+  --color-texto-suave: #94a3b8;
+  --color-borde: rgba(255, 255, 255, 0.08);
+  --radio: 14px;
+}
+
+/* Con border-box el ancho incluye el padding y el borde */
+* {
+  box-sizing: border-box;
+}
+
+/* Base de la página y cuadrícula general: cabecera, menú, contenido y pie */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: system-ui, sans-serif;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "cabecera cabecera"
+    "sidebar contenido"
+    "pie pie";
+}
+
+/* Cada zona ocupa su área de la cuadrícula */
+.cabecera {
+  grid-area: cabecera;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.contenido-principal {
+  grid-area: contenido;
+}
+.pie-pagina {
+  grid-area: pie;
+}
+
+/* Cabecera */
+.cabecera {
+  padding: 24px;
+  background-color: var(--color-zona);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.cabecera h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.cabecera p {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
+
+/* Menú lateral */
+.sidebar {
+  padding: 24px;
+  background-color: var(--color-zona);
+  border-right: 1px solid var(--color-borde);
+}
+
+.sidebar h2 {
+  margin: 0 0 16px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Los enlaces en bloque para que toda la franja se pueda pulsar */
+.sidebar a {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: var(--color-tarjeta);
+}
+
+.sidebar a:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* Enlace de la vista abierta (después lo cambiará JavaScript) */
+.sidebar a.enlace-activo {
+  background-color: var(--color-acento);
+  color: var(--color-fondo);
+  font-weight: 700;
+}
+
+/* Contenido principal */
+.contenido-principal {
+  padding: 24px;
+}
+
+.contenido-principal h2 {
+  margin-top: 0;
+}
+
+.contenido-principal p {
+  color: var(--color-texto-suave);
+}
+
+/* Resumen: tarjetas en tres columnas */
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* El título del resumen ocupa todas las columnas */
+.resumen h3 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.tarjeta-resumen {
+  padding: 20px;
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.tarjeta-resumen h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: var(--color-acento);
+}
+
+.tarjeta-resumen p {
+  margin: 0;
+}
+
+/* Pie */
+.pie-pagina {
+  padding: 16px 24px;
+  background-color: var(--color-zona);
+  border-top: 1px solid var(--color-borde);
+}
+
+.pie-pagina p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-texto-suave);
+}
+
+/* Ventanas estrechas: todo en una columna y el menú en fila */
+@media (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "cabecera"
+      "sidebar"
+      "contenido"
+      "pie";
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sidebar a {
+    margin-bottom: 0;
+  }
+
+  .resumen {
+    grid-template-columns: 1fr;
+  }
+}
